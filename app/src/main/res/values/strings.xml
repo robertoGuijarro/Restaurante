@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">1Tutorial</string>
+    <string-array name="oficio">
+        <item>camarero</item>
+        <item>cocinero</item>
+        <item>barra</item>
+    </string-array>
+</resources>
