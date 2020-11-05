@@ -1,20 +1,21 @@
 package com.example.a1tutorial.providers;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserDatabaseProvider {
 
-    FirebaseDatabase database;
-    DatabaseReference myRef;
+
+    CollectionReference database;
 
     public UserDatabaseProvider(){
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Users");
+        database = FirebaseFirestore.getInstance().collection("Users");
+
     }
 
-    public DatabaseReference getMyRef() {
-        return myRef;
+    public CollectionReference getDatabase() {
+        return database;
     }
+
 
 }

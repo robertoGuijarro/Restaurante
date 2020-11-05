@@ -12,4 +12,8 @@ public class AuthProvider {
     public FirebaseAuth getAuth() {
         return auth;
     }
+
+    public String idAuth(){
+        return auth.getUid();
+    }
 }

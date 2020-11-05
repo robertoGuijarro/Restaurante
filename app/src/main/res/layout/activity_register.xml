@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.RegisterActivity">
+    tools:context=".activity.RegisterActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -75,9 +75,8 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="Registrar"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

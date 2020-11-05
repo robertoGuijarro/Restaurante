@@ -2,31 +2,32 @@ package com.example.a1tutorial.models;
 
 import java.io.Serializable;
 
-public class Users implements Serializable {
+public class User implements Serializable {
     String id;
     String name;
     String email;
     String oficio;
     String pass;
+    Long fechaCreacion;
 
-
-    public Users() {
+    public User() {
 
     }
 
-    public Users (String email, String pass){
+    public User(String email, String pass){
         this.email = email;
         this.pass = pass;
     }
 
-    public Users( String name, String email, String oficio, String pass) {
+    public User( String name, String email, String oficio, String pass) {
         this.name = name;
         this.email = email;
         this.oficio = oficio;
         this.pass = pass;
+        fechaCreacion =
     }
 
-    public Users(String id, String name, String email, String oficio, String pass) {
+    public User(String id, String name, String email, String oficio, String pass) {
         this.id = id;
         this.name = name;
         this.email = email;

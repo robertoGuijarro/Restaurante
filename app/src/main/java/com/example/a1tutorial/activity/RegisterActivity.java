@@ -1,4 +1,4 @@
-package com.example.a1tutorial.activities;
+package com.example.a1tutorial.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a1tutorial.R;
-import com.example.a1tutorial.models.Users;
+import com.example.a1tutorial.activity.camarero.Fragment_camarero;
+import com.example.a1tutorial.models.User;
 import com.example.a1tutorial.providers.AuthProvider;
 import com.example.a1tutorial.providers.UserDatabaseProvider;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -28,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner spinnerOficio;
     Button btnResgistrar;
     private UserDatabaseProvider mUserProvider;
-    private Users user;
     String idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +37,13 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mUserProvider = new UserDatabaseProvider();
-        user = new Users();
-        
+
         txtEmail = findViewById(R.id.registerEmail);
         txtPassword = findViewById(R.id.registerPassword);
         txtName = findViewById(R.id.resgisterName);
-        
+
         spinnerOficio = findViewById(R.id.registerOficio);
-        
+
         btnResgistrar = findViewById(R.id.registerBtn);
         btnResgistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 crearUsuario();
             }
         });
-        
+
     }
 
     private void crearUsuario() {
@@ -60,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
         final String email = txtEmail.getText().toString();
         final String oficio = spinnerOficio.getSelectedItem().toString();
 
-        final Users userAuth = new Users(email, pass);
 
 
         final AuthProvider authFirebase = new AuthProvider();
@@ -70,14 +69,17 @@ public class RegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "se ha registrado correctamente ", Toast.LENGTH_SHORT).show();
                     idUser = task.getResult().getUser().getUid();
-                    Users userNew = new Users(name, email, oficio, pass);
+                    User userNew = new User(name, email, oficio, pass);
 
-                    mUserProvider.getMyRef().child(idUser).setValue(userNew);
+                    Map<String, Object> userMap = new HashMap<>();
+                    userMap.put("nombre", userNew.getName());
+                    userMap.put("password", userNew.getPass());
+                    userMap.put("email", userNew.getEmail());
+                    userMap.put("oficio", userNew.getOficio());
 
-                    userNew.setId(idUser);
+                    mUserProvider.getDatabase().document(authFirebase.idAuth()).set(userMap);
 
-                    Intent intento = new Intent(RegisterActivity.this, HomeActivity.class);
-                    intento.putExtra("user", userNew);
+                    Intent intento = new Intent(RegisterActivity.this, Fragment_camarero.class);
 
                     startActivity(intento);
                 }else{
@@ -87,18 +89,4 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-
 }
-
-/*
-        mUserProvider.getMyRef().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                txtEmail.setText(snapshot.child(idUser).child("name").getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
