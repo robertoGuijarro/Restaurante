@@ -31,7 +31,7 @@ public class Fragment_comanda extends Fragment implements View.OnClickListener{
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.activity_prueba, container, false);
+        mView = inflater.inflate(R.layout.activity_camarero_comanda, container, false);
 
         cartaDatabase = new CartaComidaDatabaseProvider();
 
