@@ -87,20 +87,20 @@ public class AuthActivity extends AppCompatActivity {
     private void rellenarCarta() {
 
         ArrayList<Carta> listaCarta = new ArrayList<>();
-        listaCarta.add(new Carta("Lubina", 11, "pescado", ""));
-        listaCarta.add(new Carta("Dorada", 9, "pescado", ""));
-        listaCarta.add(new Carta("Salmon", 8, "pescado", ""));
-        listaCarta.add(new Carta("Hamburguesa con beicon", 13, "carne", ""));
-        listaCarta.add(new Carta("Hamburguesa vegana", 9, "carne", ""));
-        listaCarta.add(new Carta("Filete con patatas", 7, "carne", ""));
-        listaCarta.add(new Carta("Entrecot", 15, "carne", ""));
-        listaCarta.add(new Carta("Lentejas", 7, "cocidos", ""));
-        listaCarta.add(new Carta("Judias", 10, "cocidos", ""));
-        listaCarta.add(new Carta("Ibericos", 19, "entrantes",""));
-        listaCarta.add(new Carta("Croquetas", 5, "entrantes", ""));
-        listaCarta.add(new Carta("Tostadas con jamon", 3, "entrantes", ""));
-        listaCarta.add(new Carta("Tarta de queso", 6, "postre", ""));
-        listaCarta.add(new Carta("Tarta de chocolate", 4, "postre", ""));
+        listaCarta.add(new Carta("Lubina", 11, "pescado", "", 10));
+        listaCarta.add(new Carta("Dorada", 9, "pescado", "", 14));
+        listaCarta.add(new Carta("Salmon", 8, "pescado", "", 12));
+        listaCarta.add(new Carta("Hamburguesa con beicon", 13, "carne", "", 67));
+        listaCarta.add(new Carta("Hamburguesa vegana", 9, "carne", "", 12));
+        listaCarta.add(new Carta("Filete con patatas", 7, "carne", "", 12));
+        listaCarta.add(new Carta("Entrecot", 15, "carne", "", 12));
+        listaCarta.add(new Carta("Lentejas", 7, "cocidos", "",12));
+        listaCarta.add(new Carta("Judias", 10, "cocidos", "", 141));
+        listaCarta.add(new Carta("Ibericos", 19, "entrantes","",14));
+        listaCarta.add(new Carta("Croquetas", 5, "entrantes", "", 123));
+        listaCarta.add(new Carta("Tostadas con jamon", 3, "entrantes", "",23));
+        listaCarta.add(new Carta("Tarta de queso", 6, "postre", "",25));
+        listaCarta.add(new Carta("Tarta de chocolate", 4, "postre", "", 26));
 
         for (Carta carta:listaCarta){
             Map<String, Object> cartas = new HashMap<>();
@@ -108,6 +108,7 @@ public class AuthActivity extends AppCompatActivity {
             cartas.put("precio", carta.getPrecio());
             cartas.put("tipo", carta.getTipo());
             cartas.put("url", carta.getUrl());
+            cartas.put("stock", carta.getStock());
 
             FirebaseFirestore.getInstance().collection("Carta").add(cartas).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
@@ -119,7 +120,7 @@ public class AuthActivity extends AppCompatActivity {
 
 
     }
-/*
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -127,6 +128,6 @@ public class AuthActivity extends AppCompatActivity {
             startActivity(new Intent(this, Fragment_camarero.class));
         }
     }
-    */
+
  
 }

@@ -46,14 +46,12 @@ public class Fragmen_carta extends Fragment implements View.OnClickListener {
 
         cartaDatabase = new CartaComidaDatabaseProvider();
 
-
-        //cargarCardView();
+        cargarCardView(cartaDatabase.getAll());
         return mView;
     }
 
 
     public void cargarCardView(Query query){
-
         FirestoreRecyclerOptions<Carta> options = new FirestoreRecyclerOptions.Builder<Carta>().setQuery(query, Carta.class).build();
         AdaptadorCartaComida adaptador = new AdaptadorCartaComida(options);
 
@@ -66,12 +64,15 @@ public class Fragmen_carta extends Fragment implements View.OnClickListener {
         if (v.getId() == btnCarne.getId()){
             cargarCardView(cartaDatabase.getCarne());
         }
+
         if (v.getId() == btnCocido.getId()){
             cargarCardView(cartaDatabase.getCocidos());
         }
+
         if (v.getId() == btnPescado.getId()){
             cargarCardView(cartaDatabase.getPescado());
         }
+
         if (v.getId() == btnPostre.getId()){
             cargarCardView(cartaDatabase.getPostre());
         }

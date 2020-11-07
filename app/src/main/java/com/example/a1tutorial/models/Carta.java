@@ -7,15 +7,17 @@ public class Carta implements Serializable {
     long precio;
     String tipo;
     String url;
+    long stock;
 
     public Carta() {
     }
 
-    public Carta(String nombre, long precio, String tipo, String url) {
+    public Carta(String nombre, long precio, String tipo, String url, long stock) {
         this.nombre = nombre;
         this.precio = precio;
         this.tipo = tipo;
         this.url = url;
+        this.stock = stock;
     }
 
     public String getNombre() {
@@ -50,6 +52,14 @@ public class Carta implements Serializable {
         this.url = url;
     }
 
+    public long getStock() {
+        return stock;
+    }
+
+    public void setStock(long stock) {
+        this.stock = stock;
+    }
+
     @Override
     public String toString() {
         return "Carta{" +
@@ -57,6 +67,7 @@ public class Carta implements Serializable {
                 ", precio=" + precio +
                 ", tipo='" + tipo + '\'' +
                 ", url='" + url + '\'' +
+                ", stock=" + stock +
                 '}';
     }
 }

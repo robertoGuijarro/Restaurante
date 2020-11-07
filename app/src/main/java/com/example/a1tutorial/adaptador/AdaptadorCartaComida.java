@@ -47,10 +47,6 @@ public class AdaptadorCartaComida extends FirestoreRecyclerAdapter<Carta, Adapta
             txtNombre= itemView.findViewById(R.id.item_carta_nombre);
             txtPrecio = itemView.findViewById(R.id.item_carta_precio);
             txtTipo = itemView.findViewById(R.id.item_carta_tipo);
-
-
-
-
         }
     }
 }

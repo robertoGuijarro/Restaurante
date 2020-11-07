@@ -24,7 +24,7 @@ public class User implements Serializable {
         this.email = email;
         this.oficio = oficio;
         this.pass = pass;
-        fechaCreacion =
+        //fechaCreacion =
     }
 
     public User(String id, String name, String email, String oficio, String pass) {

@@ -10,11 +10,13 @@ import android.view.MenuItem;
 
 import com.example.a1tutorial.R;
 import com.example.a1tutorial.activity.camarero.fragments.Fragmen_carta;
+import com.example.a1tutorial.activity.camarero.fragments.Fragment_comanda;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Fragment_camarero extends AppCompatActivity {
 
     Fragmen_carta cartaFragment = new Fragmen_carta();
+    Fragment_comanda comandaFragment = new Fragment_comanda();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class Fragment_camarero extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.menu_camarero_carta:
                     loadFragment(cartaFragment);
+                    return true;
+                case R.id.menu_camarero_comanda:
+                    loadFragment(comandaFragment);
                     return true;
             }
             return false;
