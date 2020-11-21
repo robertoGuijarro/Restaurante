@@ -53,7 +53,8 @@
                     android:layout_marginRight="10dp">
 
                     <Button
-                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:background="@drawable/my_button_rounded"
+                        android:backgroundTint="@color/colorPrimary"
                         android:id="@+id/btn_comanda_crear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

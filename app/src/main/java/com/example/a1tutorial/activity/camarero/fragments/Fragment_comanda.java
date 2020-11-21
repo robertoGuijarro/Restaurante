@@ -15,6 +15,7 @@ import com.example.a1tutorial.R;
 import com.example.a1tutorial.adaptador.AdaptadorCartaComida;
 import com.example.a1tutorial.adaptador.AdaptadorComandaComida;
 import com.example.a1tutorial.models.Carta;
+import com.example.a1tutorial.models.Comanda;
 import com.example.a1tutorial.providers.CartaComidaDatabaseProvider;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
@@ -25,6 +26,7 @@ public class Fragment_comanda extends Fragment implements View.OnClickListener{
     CartaComidaDatabaseProvider cartaDatabase;
     RecyclerView listadoCartaComida;
     Button btnCarne, btnPescado, btnCocidos, btnEntrantes, btnPostre, btnAñadir;
+    private AdaptadorComandaComida adaptadorComandaComida;
 
     public Fragment_comanda(){
 
@@ -74,14 +76,18 @@ public class Fragment_comanda extends Fragment implements View.OnClickListener{
             cargarCardView(cartaDatabase.getPostre());
         }
         if (v.getId() == btnAñadir.getId()){
-            System.out.println();
+            System.out.println("entraa");
+            for(Carta i:adaptadorComandaComida.getMyFoodSelected()){
+                if(i.getUnidades()!=0){
+                    System.out.println(i.getIdComida());
+                }
+            }
         }
     }
 
     private void cargarCardView(Query query) {
         FirestoreRecyclerOptions<Carta>options = new FirestoreRecyclerOptions.Builder<Carta>().setQuery(query, Carta.class).build();
-        AdaptadorComandaComida adaptadorComandaComida = new AdaptadorComandaComida(options);
-
+         adaptadorComandaComida = new AdaptadorComandaComida(options);
         listadoCartaComida.setAdapter(adaptadorComandaComida);
         adaptadorComandaComida.startListening();
     }

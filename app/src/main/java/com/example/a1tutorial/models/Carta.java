@@ -3,6 +3,20 @@ package com.example.a1tutorial.models;
 import java.io.Serializable;
 
 public class Carta implements Serializable {
+    public String getIdComida() {
+        return idComida;
+    }
+
+    public Carta(String idComida, long unidades) {
+        this.idComida = idComida;
+        this.unidades = unidades;
+    }
+
+    public void setIdComida(String idComida) {
+        this.idComida = idComida;
+    }
+
+    String idComida;
     String nombre;
     long precio;
     String tipo;

@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a1tutorial.R;
+import com.example.a1tutorial.databinding.ActivityHomeBinding;
 import com.example.a1tutorial.providers.UserDatabaseProvider;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,17 +22,18 @@ import java.util.Map;
 public class HomeActivity extends AppCompatActivity {
 
     UserDatabaseProvider dbUser;
-
+    ActivityHomeBinding binding;
     private FirebaseAuth mAuth;
-    TextView txtPrueba, txtPrueba2, txtPrueba3, txtPrubea4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        binding=ActivityHomeBinding.inflate(getLayoutInflater());
+        View vista=binding.getRoot();
+        setContentView(vista);
 
         mAuth = FirebaseAuth.getInstance();
         dbUser = new UserDatabaseProvider();
-
 
         Map<String, Object> user = new HashMap<>();
 
