@@ -29,6 +29,7 @@ public class Fragment_comanda extends Fragment implements View.OnClickListener{
     public Fragment_comanda(){
 
     }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.activity_camarero_comanda, container, false);
@@ -48,6 +49,8 @@ public class Fragment_comanda extends Fragment implements View.OnClickListener{
         btnEntrantes.setOnClickListener(this);
         btnPostre = mView.findViewById(R.id.btn_comanda_postre);
         btnPostre.setOnClickListener(this);
+        btnAñadir = mView.findViewById(R.id.btn_comanda_crear);
+        btnAñadir.setOnClickListener(this);
 
         cargarCardView(cartaDatabase.getAll());
         return mView;
@@ -69,6 +72,9 @@ public class Fragment_comanda extends Fragment implements View.OnClickListener{
         }
         if (v.getId() == btnPostre.getId()) {
             cargarCardView(cartaDatabase.getPostre());
+        }
+        if (v.getId() == btnAñadir.getId()){
+            System.out.println();
         }
     }
 

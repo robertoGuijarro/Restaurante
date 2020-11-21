@@ -39,12 +39,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_item_comanda_mas"
+                android:id="@+id/btn_item_comanda_menos"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/boton_redondo"
-                android:text="+" />
+                android:text="-" />
 
             <TextView
                 android:id="@+id/txt_item_comanda_cantidad"
@@ -52,14 +52,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="0" />
-
             <Button
-                android:id="@+id/btn_item_comanda_menos"
+                android:id="@+id/btn_item_comanda_mas"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/boton_redondo"
-                android:text="-" />
+                android:text="+" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

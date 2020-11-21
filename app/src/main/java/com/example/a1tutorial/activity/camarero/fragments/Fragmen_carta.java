@@ -23,7 +23,7 @@ public class Fragmen_carta extends Fragment implements View.OnClickListener {
     RecyclerView listadoCartaComida;
     CartaComidaDatabaseProvider cartaDatabase;
     View mView;
-    Button btnCarne, btnPescado, btnCocido, btnPostre;
+    Button btnCarne, btnPescado, btnCocido, btnPostre, btnEntrante;
     public Fragmen_carta (){
 
     }
@@ -43,6 +43,8 @@ public class Fragmen_carta extends Fragment implements View.OnClickListener {
         btnCocido.setOnClickListener(this);
         btnPostre = mView.findViewById(R.id.btn_carta_postre);
         btnPostre.setOnClickListener(this);
+        btnEntrante = mView.findViewById(R.id.btn_carta_entrante);
+        btnEntrante.setOnClickListener(this);
 
         cartaDatabase = new CartaComidaDatabaseProvider();
 
@@ -75,6 +77,9 @@ public class Fragmen_carta extends Fragment implements View.OnClickListener {
 
         if (v.getId() == btnPostre.getId()){
             cargarCardView(cartaDatabase.getPostre());
+        }
+        if (v.getId() == btnEntrante.getId()){
+            cargarCardView(cartaDatabase.getEntrantes());
         }
     }
 }

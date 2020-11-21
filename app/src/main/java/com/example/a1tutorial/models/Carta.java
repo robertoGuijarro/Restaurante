@@ -8,6 +8,7 @@ public class Carta implements Serializable {
     String tipo;
     String url;
     long stock;
+    long unidades;
 
     public Carta() {
     }
@@ -18,6 +19,20 @@ public class Carta implements Serializable {
         this.tipo = tipo;
         this.url = url;
         this.stock = stock;
+    }
+
+    public Carta(String nombre, long precio, long unidades) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.unidades = unidades;
+    }
+
+    public long getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(long unidades) {
+        this.unidades = unidades;
     }
 
     public String getNombre() {

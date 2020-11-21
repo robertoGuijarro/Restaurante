@@ -28,8 +28,9 @@ public class AdaptadorComandaComida extends FirestoreRecyclerAdapter<Carta, Adap
     @Override
     protected void onBindViewHolder(@NonNull AdaptadorComandaComida.ViewComandaComida holder, int position, @NonNull Carta model) {
         holder.txtNombre.setText(model.getNombre());
-        holder.txtPrecio.setText(model.getPrecio()+"");
+        holder.txtPrecio.setText(model.getPrecio()+"€");
     }
+
 
     @NonNull
     @Override
